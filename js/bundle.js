@@ -4,45 +4,40 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var dotenv = require('dotenv');
 
-var MainFeed = React.createClass({
-  displayName: 'MainFeed',
 
-  render: function () {
-    return React.createElement(
-      'div',
-      { className: 'container' },
-      React.createElement(
-        'h2',
-        null,
-        'This is my div'
+var MainFeed = React.createClass({displayName: "MainFeed",
+  render: function() {
+    return (
+      React.createElement("div", {className: "container"}, 
+        React.createElement("h2", null, "This is my div")
       )
     );
   }
 });
 
-var Account = React.createClass({
-  displayName: 'Account',
-
-  render: function () {
-    if (localStorage.getItem('user')) {
-      return React.createElement(
-        'a',
-        { href: 'users/me' },
-        'Your Account'
-      );
-    } else {
-      return React.createElement(
-        'a',
-        { href: 'login' },
-        'Login'
-      );
-    }
+var Account = React.createClass({displayName: "Account",
+  render: function() {
+    if(localStorage.getItem('user')) {
+      return (
+      React.createElement("a", {href: "users/me"}, "Your Account")
+    )
+  } else {
+    return (
+      React.createElement("a", {href: "login"}, "Login")
+    )
   }
-});
+  }
+})
 
-ReactDOM.render(React.createElement(MainFeed, null), document.getElementById('example'));
+ReactDOM.render(
+  React.createElement(MainFeed, null),
+  document.getElementById('example')
+);
 
-ReactDOM.render(React.createElement(Account, null), document.getElementById('account'));
+ReactDOM.render(
+  React.createElement(Account, null),
+  document.getElementById('account')
+)
 
 },{"dotenv":2,"react":159,"react-dom":30}],2:[function(require,module,exports){
 (function (process){
