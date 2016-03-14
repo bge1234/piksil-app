@@ -1,0 +1,15 @@
+body {
+  padding-top: 65px;
+}
+.navbar-default {
+  background-color: white;
+  border-bottom: 1px solid black;
+}
+.header-brand {
+  line-height: inherit;
+  height: 50px;
+  width: auto;
+}
+.icon-bar {
+  color: black;
+}
