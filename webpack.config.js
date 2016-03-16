@@ -1,30 +1,65 @@
-var debug = process.env.NODE_ENV !== "production";
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const NpmInstallPlugin = require('npm-install-webpack-plugin');
 
-module.exports = {
-  context: __dirname+"/app",
-  devtool: debug ? "inline-sourcemap" : null,
-  entry: "./js/client.js",
+const TARGET = process.env.npm_lifecycle_event;
+const PATHS = {
+  app: path.join(__dirname, 'app'),
+  build: path.join(__dirname, 'build')
+};
+process.env.BABEL_ENV = TARGET;
+
+const common = {
+  // Entry accepts a path or an object of entries. For now, we'll be using an object since it provides more options.
   module: {
+    resolve: {
+      extensions: ['', '.js','jsx']
+    },
     loaders: [
       {
+        test: /\.css$/,
+        loaders: ['style', 'css'],
+        include: PATHS.app
+      },
+      {
         test: /\.jsx?$/,
-        exclude: /(node_modules)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015', 'stage-0'],
-          plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
-        }
+        loaders: ['babel?cacheDirectory'],
+        include: PATHS.app
       }
     ]
   },
-  output: {
-    path: __dirname + "/app/js",
-    filename: "client.min.js"
+  entry: {
+    app: PATHS.app
   },
-  plugins: debug ? [] : [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
-  ],
+  output: {
+    path: PATHS.build,
+    filename: 'bundle.js'
+  }
 };
+
+//Default config
+if(TARGET === 'start' || !TARGET) {
+  module.exports = merge(common, {
+    devServer: {
+      contentBase: PATHS.build,
+      historyApiFallback: true,
+      hot: true,
+      inline: true,
+      progress: true,
+      stats: 'errors-only',
+      host: process.env.HOST,
+      port: process.env.PORT
+    },
+    plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new NpmInstallPlugin({
+        save: true
+      })
+    ]
+  });
+}
+
+if(TARGET === 'build') {
+  module.exports = merge(common, {})
+}
