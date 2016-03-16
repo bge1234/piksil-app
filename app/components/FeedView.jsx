@@ -1,6 +1,7 @@
 import React from 'react';
-
-export default class Show extends React.Component {
+import {Link} from 'react-router';
+import uuid from 'node-uuid'
+export default class Feed extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -20,7 +21,8 @@ export default class Show extends React.Component {
         <div className="row-fluid">
           <div className="show-thumbs">
               {this.state.pictures.map(picture =>
-                <img className="feed-thumbnail" key={picture.id} src={picture.url}></img>)}
+                <Link to={'/${picture._id}'}>
+                  <img className="feed-thumbnail" key={picture._id} src={picture.url}></img></Link>)}
           </div>
         </div>
       </div>
