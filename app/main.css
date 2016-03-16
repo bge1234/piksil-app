@@ -13,3 +13,8 @@ body {
 .icon-bar {
   color: black;
 }
+.feed-thumbnail {
+  height: 100px;
+  width: 100px;
+  margin: 8px 8px;
+}

@@ -16,11 +16,13 @@ export default class Show extends React.Component {
   }
   render() {
     return (
-      <div>
-        <ul>
-          {this.state.pictures.map(picture =>
-          <li key={picture.id}>{picture.url}</li>)}
-        </ul>
+      <div className="container">
+        <div className="row-fluid">
+          <div className="show-thumbs">
+              {this.state.pictures.map(picture =>
+                <img className="feed-thumbnail" key={picture.id} src={picture.url}></img>)}
+          </div>
+        </div>
       </div>
     )
   }
