@@ -8,12 +8,41 @@ var dotenv = require('dotenv');
 var MainFeed = React.createClass({displayName: "MainFeed",
   render: function() {
     return (
-      React.createElement("div", {className: "container"}, 
+      React.createElement("div", {className: "container"},
         React.createElement("h2", null, "This is my div")
       )
     );
   }
 });
+
+      $(window).load(function() {
+        var getter = $.ajax({
+          url: "https://pikselapi-benebel.herokuapp.com/api",
+          method: "GET",
+          dataType: "json"
+        });
+
+        getter.done(function(response) {
+          console.log(response);
+          var MainFeed2 = React.createClass({displayName: "MainFeed2",
+            render: function() {    return (
+                  React.createElement("div", {className: "container"},
+                    React.createElement("p", null, "response")
+                  )
+                );
+              }
+            });
+
+            ReactDOM.render(
+              React.createElement(MainFeed2, null),
+              document.getElementById('example2')
+            );
+        });
+
+        getter.fail(function(response) {
+          console.log("Error getting JSON:!");
+        });
+      })
 
 var Account = React.createClass({displayName: "Account",
   render: function() {
@@ -1232,7 +1261,7 @@ module.exports = performanceNow;
  *
  * @providesModule shallowEqual
  * @typechecks
- * 
+ *
  */
 
 'use strict';
