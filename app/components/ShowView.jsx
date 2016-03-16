@@ -1,19 +1,27 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var dotenv = require('dotenv');
+import React from 'react';
 
-$(window).load(function() {
-  var getter = $.ajax({
-    url: "https://pikselapi-benebel.herokuapp.com/api",
-    method: "GET",
-    dataType: "json"
-  });
+export default class Show extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      pictures: []
+    }
+  }
+  componentDidMount() {
+    var self = this;
 
-  getter.done(function(response) {
-    
-  });
-
-  getter.fail(function(response) {
-    console.log("Error getting JSON:!");
-  });
-});
+    $.getJSON('https://pikselapi-benebel.herokuapp.com/api', function(result){
+      self.setState({pictures: result})
+    })
+  }
+  render() {
+    return (
+      <div>
+        <ul>
+          {this.state.pictures.map(picture =>
+          <li key={picture.id}>{picture.url}</li>)}
+        </ul>
+      </div>
+    )
+  }
+}
