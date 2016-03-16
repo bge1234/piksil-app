@@ -2,7 +2,12 @@
   "name": "piksil-app",
   "version": "1.0.0",
   "description": "## Setup",
-  "main": "webpack.config.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack-dev-server"
+  },
   "dependencies": {
     "babel-loader": "^6.2.4",
     "react": "^0.14.7",
@@ -14,13 +19,11 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-survivejs-kanban": "^0.3.3",
     "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
     "npm-install-webpack-plugin": "^3.0.0",
-    "style-loader": "^0.13.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "start": "webpack-dev-server"
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
+    "webpack-merge": "^0.8.3"
   },
   "repository": {
     "type": "git",

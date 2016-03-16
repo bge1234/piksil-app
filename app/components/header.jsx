@@ -1,34 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-class Header extends React.Component {
+export default class Header extends React.Component {
   render(){
     return (
-  <div>
-        <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        <a href="/" class="pull-left"><img src="../assets/bootstrap_brand.png" alt=""></img></a>
-      </div>
-      <div class="collapse navbar-collapse" id="nav-menu">
-        <ul class="nav navbar-nav">
-          <li><a href="/feed">Feed</a></li>
-          <li><a href="/user/favorites">Favorites</a></li>
-          <li><a href="/user">Account</a></li>
-        </ul>
-      </div>
-    </div>
+      <div>
+        <nav className="navbar navbar-default navbar-fixed-top">
+          <div className="container-fluid">
+            <div className="navbar-header">
+              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+                <span className="sr-only">Toggle navigation</span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+              </button>
+            <a href="/" className="navbar-brand">0_o Piksil</a>
+          </div>
+          <div className="collapse navbar-collapse" id="nav-menu">
+            <ul className="nav navbar-nav">
+              <li><a href="/feed">Feed</a></li>
+              <li><a href="/user/favorites">Favorites</a></li>
+              <li><a href="/user">Account</a></li>
+            </ul>
+          </div>
+        </div>
     </nav>
-  </div>
-    )
+      </div>
+    );
   }
 }
-const nav = document.getElementById('nav');
-
-ReactDOM.render(<Header/>, nav)
