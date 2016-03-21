@@ -1,0 +1,5 @@
+- Create and style show page.
+- Style homepage?
+- Routing for single-page app.
+- Save likes and comments for return visits.
+- Stretch: Connect API to Amazon.
