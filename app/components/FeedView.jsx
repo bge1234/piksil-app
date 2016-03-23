@@ -21,7 +21,7 @@ export default class Feed extends React.Component {
         <div className="row-fluid">
           <div className="show-thumbs">
               {this.state.pictures.map(picture =>
-                <a href={`/images/${picture._id}`}>
+                <a href={`${picture.url}`}>
                   <img className="feed-thumbnail" key={picture._id} src={picture.url}></img>
                   </a>
                 )}
