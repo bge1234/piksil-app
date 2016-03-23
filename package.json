@@ -9,6 +9,7 @@
     "start": "webpack-dev-server"
   },
   "dependencies": {
+    "babel-core": "^6.7.4",
     "babel-loader": "^6.2.4",
     "npm-install-webpack-plugin": "^3.0.0",
     "react": "^0.14.7",
